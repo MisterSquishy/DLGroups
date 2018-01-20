@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ input::-webkit-outer-spin-button,
+ input::-webkit-inner-spin-button {
+     /*annoying css to hide arrows on number inputs*/
+     -webkit-appearance: none;
+     margin: 0;
+ }
