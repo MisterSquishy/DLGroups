@@ -6,17 +6,21 @@
 <div>
     <div class="text-center">
         <h1>
-            <big><big><big><big>
+            <big class="pr-0"><big><big><big style="font-family: serif; margin-right: -1rem;">
                 &Gamma;
             </big></big></big></big>
             <sub>
-                <input id="d" type="number" min="1" max="9" class="bg-secondary text-center text-info" style="width: 1em;">
+                <input id="d" type="text" placeholder="d" pattern="[1-9]" maxlength="1" class="bg-secondary text-center text-info" style="width: 1em; border: 0;" onclick="this.select()" onchange="dChange(this.value)"/>
             </sub>
-            <big><big>
+            <big>
                 (
-                    <input id="q" type="number" min="1" max="9" class="bg-secondary text-center text-info" style="width: 1em;">
+                    <input id="q" type="text" placeholder="q" pattern="[1-9]" maxlength="1" class="bg-secondary text-center text-info" style="width: 1em; border: 0;" onclick="this.select()" onchange="qChange(this.value)"/>
                 )
-            </big></big>
+            </big>
         </h1>
+
+        <div id='projection-input'>
+            <%= render partial: 'projection_input.html', locals: { d: d, q: q } %>
+        </div>
     </div>
 </div>
