@@ -17,10 +17,14 @@
 //= require_tree .
 var d;
 var q;
+var pi = [];
 
 function dChange(val) {
     if (!isNaN(val)) {
         d = val;
+        for (var i = 1; i <= d; i++) {
+            pi.push({ 'mi' : '', 'li' : ''});
+        }
     }
     $.ajax({
         url: "/home/param_change",
@@ -42,6 +46,24 @@ function qChange(val){
         data: { 
             d: d,
             q: q
+        }
+    });
+}
+
+
+
+function piChange(val) {
+    if (!isNaN(val)) {
+        var changedCoordinate = event.target.id;
+        var tree = parseInt(changedCoordinate.substring(changedCoordinate.lastIndexOf('_') + 1));
+        var coord = changedCoordinate[0];
+        pi[tree - 1][coord + 'i'] = val; //we are 0 index but trees are 1 index
+    }
+    $.ajax({
+        url: "/home/projection_change",
+        type: "POST",
+        data: { 
+            pi: pi,
         }
     });
 }

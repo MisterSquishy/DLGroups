@@ -1,3 +1,23 @@
-<% if !d.nil? && !q.nil? %>
-    hello
+<% if !d.nil? %>
+    <h3>
+        <div class="d-inline" style="font-family: serif;">
+            &Pi;
+        </div> 
+        (g) = (
+        <% (1..d).each do |i| %>
+            (
+            <input id="<%='m_' + i.to_s%>" type="text" placeholder="<%='m_' + i.to_s%>" pattern="[1-9]{2}" maxlength="2" class="bg-secondary text-center text-info" style="width: 2em; border: 0;" onclick="this.select()" onchange="piChange(this.value)"/>
+            ,
+            <input id="<%='l_' + i.to_s%>" type="text" placeholder="<%='l_' + i.to_s%>" pattern="[1-9]{2}" maxlength="2" class="bg-secondary text-center text-info" style="width: 2em; border: 0;" onclick="this.select()" onchange="piChange(this.value)"/>
+            )
+            <% if i < d %>
+                ,
+            <% end %>
+        <% end %>
+        )
+    </h3>
+
+    <div id = 'word-metric'>
+        <%= render partial: 'word_metric.html', locals: { pi: @pi, wm: @wm } %>
+    </div>
 <% end %>
