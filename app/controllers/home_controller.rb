@@ -28,15 +28,16 @@ class HomeController < ApplicationController
 
   def projection_change
     tempPi = [];
-    (1..@d.to_i).step(1) do |i|
-      if !params[:i]["mi"].nil? && !params[:i]["mi"].empty? && numeric?(params[:i]["mi"]) && !params[:i]["li"].nil? && !params[:i]["li"].empty? && numeric?(params[:i]["li"]) then
-        tempPi.push(params[:i])
+    params["pi"].each do |i|
+      pair = params["pi"][i]
+      if !pair["mi"].nil? && !pair["mi"].empty? && numeric?(pair["mi"]) && !pair["li"].nil? && !pair["li"].empty? && numeric?(pair["li"]) then
+        tempPi.push({:mi => pair["mi"].to_i, :li => pair["li"].to_i})
       else return
       end
     end
     @pi = tempPi
 
-    @wm = MathHelper.compute_word_metric(@pi);
+    @wm = MathHelper.compute_word_length(@pi);
 
     respond_to do |format|
       format.js

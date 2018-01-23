@@ -22,6 +22,7 @@ var pi = [];
 function dChange(val) {
     if (!isNaN(val)) {
         d = val;
+        pi = [];
         for (var i = 1; i <= d; i++) {
             pi.push({ 'mi' : '', 'li' : ''});
         }
@@ -50,8 +51,6 @@ function qChange(val){
     });
 }
 
-
-
 function piChange(val) {
     if (!isNaN(val)) {
         var changedCoordinate = event.target.id;
@@ -63,7 +62,7 @@ function piChange(val) {
         url: "/home/projection_change",
         type: "POST",
         data: { 
-            pi: pi,
+            pi: pi
         }
     });
 }
