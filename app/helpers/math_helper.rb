@@ -9,7 +9,8 @@ module MathHelper
             return nil if !numeric?(pair[:li])
         end
 
-        wm = Float::INFINITY
+        length_to_sigma = {}
+        true_word_length = Float::INFINITY
         d = pi.length
         (0..d - 1).to_a.permutation.each do |sigma|
             wm_sigma = -1
@@ -25,7 +26,17 @@ module MathHelper
 
                 wm_sigma = [wm_i, wm_sigma].max
             end
-            wm = [wm_sigma, wm].min
+
+            if length_to_sigma[wm_sigma].nil? then length_to_sigma[wm_sigma] = [sigma.map {|val| val + 1}]
+            else length_to_sigma[wm_sigma].push(sigma.map {|val| val + 1})
+            end
+
+            true_word_length = [true_word_length, wm_sigma].min
+        end
+
+        wm = []
+        length_to_sigma.sort.each do |length, sigma|
+            wm.push({:sigma => sigma, :length => length, :isMin => true_word_length == length})
         end
         return wm
     end

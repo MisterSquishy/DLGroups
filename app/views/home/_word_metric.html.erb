@@ -1,4 +1,26 @@
 <% if !wm.nil? %>
-    pi : <%= pi %><br/>
-    wm : <%= wm %>
+    <div class="w-25 mx-auto">
+        <table class="table table-hover">
+            <thead class="table-primary">
+                <tr class="text-primary">
+                    <th>&sigma;</th>
+                    <th>l<sub>&sigma;</sub>(g)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% wm.each do |wm_sigma| %>
+                    <% wm_sigma[:sigma].each do |wm_sigma_i| %>
+                        <% if wm_sigma[:isMin] %>
+                            <tr class="table-success">
+                        <% else %>
+                            <tr>
+                        <% end %>
+                            <td><%= wm_sigma_i %></td>
+                            <td><%= wm_sigma[:length] %></td>
+                        </tr>
+                    <% end %>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
 <% end %>
