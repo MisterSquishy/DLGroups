@@ -3,3 +3,13 @@ production:
   encoding: unicode
   database: postgres_production
   pool: 5
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: postgres_dev
+  pool: 3
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: postgres_test
+  pool: 1
