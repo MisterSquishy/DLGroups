@@ -4,10 +4,16 @@ module MathHelper
     end
 
     def self.compute_word_length(pi)
+        m_tot = 0
+        l_tot = 0
         pi.each do |pair|
             return nil if !numeric?(pair[:mi])
             return nil if !numeric?(pair[:li])
+            m_tot += pair[:mi]
+            l_tot += pair[:li]
         end
+
+        return [{:sigma => [[]], :isInvalid => true, :m_tot => m_tot, :l_tot => l_tot}] if m_tot != l_tot
 
         length_to_sigma = {}
         true_word_length = Float::INFINITY

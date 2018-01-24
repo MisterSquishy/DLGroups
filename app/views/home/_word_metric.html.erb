@@ -9,14 +9,24 @@
             </thead>
             <tbody>
                 <% wm.each do |wm_sigma| %>
-                    <% wm_sigma[:sigma].each do |wm_sigma_i| %>
-                        <% if wm_sigma[:isMin] %>
-                            <tr class="table-success">
+                    <% if wm_sigma[:isInvalid] %>
+                        <tr class="table-danger">
+                            <td>g is not in the group</td>
+                            <td>
+                                &Sigma; m<sub>i</sub> = <%= wm_sigma[:m_tot] %><br/>
+                                &Sigma; l<sub>i</sub> = <%= wm_sigma[:l_tot] %>
+                            </td>
+                        </tr>
                         <% else %>
-                            <tr>
-                        <% end %>
-                            <td><%= wm_sigma_i %></td>
-                            <td><%= wm_sigma[:length] %></td>
+                            <% wm_sigma[:sigma].each do |wm_sigma_i| %>
+                                <% if wm_sigma[:isMin] %>
+                                    <tr class="table-success">
+                                <% else %>
+                                    <tr>
+                                <% end %>
+                                <td><%= wm_sigma_i %></td>
+                                <td><%= wm_sigma[:length] %></td>
+                            <% end %>
                         </tr>
                     <% end %>
                 <% end %>

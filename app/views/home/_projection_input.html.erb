@@ -6,9 +6,9 @@
         (g) = (
         <% (1..d).each do |i| %>
             (
-            <input id="<%='m_' + i.to_s%>" type="text" placeholder="<%='m_' + i.to_s%>" pattern="[1-9]{2}" maxlength="2" class="bg-secondary text-center text-info" style="width: 2em; border: 0;" onclick="this.select()" onchange="piChange(this.value)"/>
+            <input id="<%='m_' + i.to_s%>" type="text" placeholder="<%='m' + i.to_s%>" pattern="[1-9]{2}" maxlength="2" class="bg-secondary text-center text-info" style="width: 2em; border: 0;" onclick="this.select()" onchange="piChange(this.value)"/>
             ,
-            <input id="<%='l_' + i.to_s%>" type="text" placeholder="<%='l_' + i.to_s%>" pattern="[1-9]{2}" maxlength="2" class="bg-secondary text-center text-info" style="width: 2em; border: 0;" onclick="this.select()" onchange="piChange(this.value)"/>
+            <input id="<%='l_' + i.to_s%>" type="text" placeholder="<%='l' + i.to_s%>" pattern="[1-9]{2}" maxlength="2" class="bg-secondary text-center text-info" style="width: 2em; border: 0;" onclick="this.select()" onchange="piChange(this.value)"/>
             )
             <% if i < d %>
                 ,
